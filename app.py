@@ -2,6 +2,10 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return "✅ Server is running."
+
 @app.route('/download', methods=['POST'])
 def download():
     data = request.get_json()
