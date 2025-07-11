@@ -15,3 +15,6 @@ def download():
         "message": "Server received the URL successfully.",
         "received_url": youtube_url
     })
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=3000)
