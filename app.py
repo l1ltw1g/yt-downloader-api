@@ -1,6 +1,6 @@
+from flask import Flask, request, jsonify
 import subprocess
 import os
-from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -19,15 +19,15 @@ def download():
     trimmed_filename = "trimmed.mp4"
 
     try:
-        # Download video using yt-dlp
+        # ✅ Download video using yt-dlp and cookies
         subprocess.run([
             "yt-dlp",
-            "-f", "best",
+            "--cookies", "cookies.txt",
             "-o", output_filename,
             youtube_url
         ], check=True)
 
-        # Trim first 60 seconds with ffmpeg
+        # ✅ Trim first 60 seconds using ffmpeg
         subprocess.run([
             "ffmpeg", "-y",
             "-i", output_filename,
